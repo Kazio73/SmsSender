@@ -15,22 +15,4 @@
     }
   ],
   "minimum-stability": "dev",
-  "require": {
-    "phpclasses/php_serial": ">=1.10"
-  },
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "https:\/\/www.phpclasses.org\/"
-    }
-  ],
-  "config": {
-    "secure-http": true
-  },
-  "http-basic": {
-    "www.phpclasses.org": {
-      "username": "kazikkarczew",
-      "password": "b13dc27f62767634b79a148bb8f6b785"
-    }
-  }
 }
