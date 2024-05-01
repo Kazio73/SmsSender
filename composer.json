@@ -1,0 +1,36 @@
+{
+  "name": "kazio/smssender",
+  "description": "Simple SMS sender. Method txt and PDU are implemented. Code maked in OOP PHP 8.3",
+  "type": "library",
+  "license": "MIT License",
+  "autoload": {
+    "psr-4": {
+      "src\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Kazik Karczewski",
+      "email": "kazio@kargraf.com.pl"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "phpclasses/php_serial": ">=1.10"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https:\/\/www.phpclasses.org\/"
+    }
+  ],
+  "config": {
+    "secure-http": true
+  },
+  "http-basic": {
+    "www.phpclasses.org": {
+      "username": "kazikkarczew",
+      "password": "b13dc27f62767634b79a148bb8f6b785"
+    }
+  }
+}
