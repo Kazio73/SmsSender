@@ -1,0 +1,28 @@
+{
+    "packages": [
+        {
+            "name": "phpclasses/php_serial",
+            "version": "1.10",
+            "version_normalized": "1.10.0.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://www.phpclasses.org/install/package/php_serial.zip"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-develop": "1.0.x-dev"
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "install-path": "../phpclasses/php_serial"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}

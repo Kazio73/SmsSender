@@ -1,10 +1,10 @@
 <?php
 
-namespace src;
+namespace Kazio\SmsSender;
 
-use src\Main\Sms;
-use src\Interfaces\SmsHttp;
-use src\Traits\generateSmsPdu;
+use Kazio\SmsSender\Main\Sms;
+use Kazio\SmsSender\Interfaces\SmsHttp;
+use Kazio\SmsSender\Traits\generateSmsPdu;
 
 class HttpSMS
 {
@@ -29,13 +29,13 @@ class HttpSMS
 
 
         try {
-       $sms = Sms::factory(new SmsHttp($this->serialEthernetConverterIP, $this->serialEthernetConverterPort),true,);
+       $sms = Sms::factory(new SmsHttp($this->serialEthernetConverterIP, $this->serialEthernetConverterPort),false);
 
               if ($sms->sendSmsPdu($pdu)) {
-                echo "SMS Sent\n";
+            //    echo "SMS Sent\n";
                 return true;
             } else {
-                echo "Sent Error\n";
+             //   echo "Sent Error\n";
                 return false;
             }
 
