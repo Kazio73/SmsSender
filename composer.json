@@ -1,0 +1,25 @@
+{
+  "name": "kazio/smssender",
+  "type": "library",
+  "description": "Simple SMS sender. Method txt and PDU are implemented. Code maked in OOP PHP 8.3",
+  "keywords": ["sms","smsSender", "sms pdu"],
+  "homepage": "https://github.com/Kazio73/SmsSender",
+  "license": "AGPL-3.0",
+  "autoload": {
+    "psr-4": {
+      "Kazio\\SmsSender\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Kazik Karczewski",
+      "email": "kazio@kargraf.com.pl",
+      "homepage": "http://dinst.pl",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=8.1.0"
+  },
+  "minimum-stability": "dev"
+}
