@@ -7,7 +7,6 @@ use Kazio\SmsSender\Main\SmsPduConverter as PDUConverter;
 
 class  SmsPduMaker
 {
-
     protected $message;
 
     /**
