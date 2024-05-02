@@ -1,6 +1,6 @@
 <?php
 
-namespace src\Interfaces;
+namespace Kazio\SmsSender\Interfaces;
 
 use Exception;
 
@@ -73,7 +73,7 @@ class SmsHttp implements SmsInterface
         if ($this->_socket) {
             while (!in_array($last, $this->_validOutputs)) {
                 $_buffer = trim(fgets($this->_socket));
-                echo("Buffer:" .$_buffer."\n"); // TEST
+               // echo("Buffer:" .$_buffer."\n"); // TEST
                 if ($count > 15) $_buffer = 'ERROR';
                 $last = strtoupper($_buffer);
                 $buffer[] = $_buffer;

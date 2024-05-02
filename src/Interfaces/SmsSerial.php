@@ -14,7 +14,7 @@
  * @copyright under GPL 2 licence
  */
 
-namespace src\Interfaces;
+namespace Kazio\SmsSender\Interfaces;
 
 class SmsSerial implements SmsInterface
 {

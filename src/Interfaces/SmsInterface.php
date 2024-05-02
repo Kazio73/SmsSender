@@ -1,6 +1,6 @@
 <?php
 
-namespace src\Interfaces;
+namespace  Kazio\SmsSender\Interfaces;
 
 interface SmsInterface
 {
