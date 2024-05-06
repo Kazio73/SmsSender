@@ -1,9 +1,9 @@
 <?php
 
-namespace src\Main;
+namespace Kazio\SmsSender\Main;
 
-use src\Main\SmsMessage as Message;
-use src\Main\SmsPduConverter as PDUConverter;
+use Kazio\SmsSender\Main\SmsMessage as Message;
+use Kazio\SmsSender\Main\SmsPduConverter as PDUConverter;
 
 class  SmsPduMaker
 {

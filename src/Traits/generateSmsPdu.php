@@ -1,9 +1,9 @@
 <?php
 
-namespace src\Traits;
+namespace Kazio\SmsSender\Traits;
 
-use src\Main\SmsPduMaker;
-use src\Main\SmsMessage as SMS;
+use Kazio\SmsSender\Main\SmsPduMaker;
+use Kazio\SmsSender\Main\SmsMessage as SMS;
 
 trait generateSmsPdu
 {

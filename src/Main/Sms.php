@@ -1,11 +1,11 @@
 <?php
 
-namespace src\Main;
+namespace Kazio\SmsSender\Main;
 
 use Exception;
-use src\Interfaces\SmsHttp;
-use src\Interfaces\SmsSerial;
-use src\Interfaces\SmsInterface;
+use Kazio\SmsSender\Interfaces\SmsHttp;
+use Kazio\SmsSender\Interfaces\SmsSerial;
+use Kazio\SmsSender\Interfaces\SmsInterface;
 
 /**
  * GSM Modem AT Send/receive

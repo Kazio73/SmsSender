@@ -6,9 +6,9 @@
  * @author Max Boesing <max@kriegt.es>
  * @since 20120924 16:09
  */
-namespace src\Main;
+namespace Kazio\SmsSender\Main;
 
-use src\Main\SmsPduConverter AS PDUConverter;
+use Kazio\SmsSender\Main\SmsPduConverter AS PDUConverter;
 
 /**
  * class Message

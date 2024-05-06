@@ -1,10 +1,10 @@
 <?php
 
-namespace src;
+namespace Kazio\SmsSender;
 
-use src\Main\Sms;
-use src\Interfaces\SmsHttp;
-use src\Traits\generateSmsPdu;
+use Kazio\SmsSender\Main\Sms;
+use Kazio\SmsSender\Interfaces\SmsHttp;
+use Kazio\SmsSender\Traits\generateSmsPdu;
 
 class HttpSMS
 {

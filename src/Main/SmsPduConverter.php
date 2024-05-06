@@ -22,7 +22,7 @@
  * @author Max Boesing <max@kriegt.es>
  * @since 20120919 11:10
  */
-namespace src\Main;
+namespace Kazio\SmsSender\Main;
 
 /**
  * class Pdu

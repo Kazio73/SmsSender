@@ -1,8 +1,8 @@
 <?php
 
-namespace src\Main;
+namespace Kazio\SmsSender\Main;
 
-use src\Interfaces\SmsInterface;
+use Kazio\SmsSender\Interfaces\SmsInterface;
 
 
 class SmsDummy implements SmsInterface
