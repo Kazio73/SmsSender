@@ -121,7 +121,7 @@ class Sms
     public function sendSmsPdu(array $params)
     {
        // echo("Sleep starting.\n"); // TEST
-       // sleep(4);
+       sleep(2);
        // echo("Sleep ending\n"); // TEST
         $this->deviceOpen();
         if ($this->openAT === true) {
@@ -138,7 +138,7 @@ class Sms
             } else {
                 return false;
             }
-            if ($out === '>') {
+            if ($out === '> ') {
                 $this->sendMessage("{$params['content']}");
                 $this->sendMessage($end = chr('26'));
                 $out = $this->readPort();

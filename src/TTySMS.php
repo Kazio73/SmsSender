@@ -19,7 +19,7 @@ class TTySMS
     public function __construct(array $sms)
     {
         $this->setParams($sms);
-        $this->serial = '/dev/ttyUSB3';
+        $this->serial = '/dev/ttyUSB2';
         $this->pin = '1234';
         $this->options = array(
             "baud" => 115200,

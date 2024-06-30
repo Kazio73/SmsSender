@@ -231,7 +231,7 @@ class SmsSerialIO implements SmsInterface
 
     public function deviceOpen()
     {
-        return $this->serial;
+        return true;
     }
 
     public function setValidOutputs($validOutputs)
