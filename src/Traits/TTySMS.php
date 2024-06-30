@@ -2,11 +2,8 @@
 
 namespace Kazio\SmsSender\Traits;
 
-use Kazio\SmsSender\Interfaces\SmsSerial;
-use Kazio\SmsSender\Interfaces\SmsSerialIO;
 use Kazio\SmsSender\Main\Sms;
-use Kazio\SmsSender\Interfaces\SmsHttp;
-use Kazio\SmsSender\Traits\generateSmsPdu;
+use Kazio\SmsSender\Interfaces\SmsSerialIO;
 
 class TTySMS
 {
@@ -19,7 +16,7 @@ class TTySMS
     public function __construct(array $sms)
     {
         $this->setParams($sms);
-        $this->serial = '/dev/ttyUSB2';
+        $this->serial = '/dev/ttyUSB3';
         $this->pin = '1234';
         $this->options = array(
             "baud" => 115200,

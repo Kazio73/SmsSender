@@ -4,7 +4,7 @@ namespace Kazio\SmsSender\Main;
 
 use Exception;
 use Kazio\SmsSender\Interfaces\SmsHttp;
-use Kazio\SmsSender\Interfaces\SmsSerial;
+use Kazio\SmsSender\Interfaces\SmsSerialIO;
 use Kazio\SmsSender\Interfaces\SmsInterface;
 
 /**
@@ -41,22 +41,25 @@ class Sms
      */
     public static function factory($serial, $debug = false)
     {
-        if (!($serial instanceof SmsSerial ||
+        if (!($serial instanceof SmsSerialIO ||
             $serial instanceof SmsHttp ||
             $serial instanceof SmsDummy
         )) {
             throw new Exception("NOT IMPLEMENTED", self::EXCEPTION_SERVICE_NOT_IMPLEMENTED);
         }
 
-        $serial->setValidOutputs(array(
+        $serial->setValidOutputs([
             'OK',
             'ERROR',
             '+CPIN: SIM PIN',
             '+CPIN: READY',
             '> AT+CMGF=0',
             '> AT+CSCS=?',
-            '>'
-        ));
+            '> ',
+            '>',
+            "+CMGS:"
+        ]
+        );
 
         return new self($serial, $debug);
     }
@@ -67,19 +70,9 @@ class Sms
         $this->_debug = $debug;
     }
 
-    private function readPort($returnBufffer = false)
+    private function readPort()
     {
-        $out = null;
-        list($last, $buffer) = $this->_serial->readPort();
-        if ($returnBufffer) {
-            $out = $buffer;
-        } else {
-            $out = strtoupper($last);
-        }
-        if ($this->_debug === true) {
-            echo $out . "\n";
-        }
-        return $out;
+      return $this->_serial->readPort();
     }
 
     private function sendMessage($msg)
@@ -128,7 +121,7 @@ class Sms
     public function sendSmsPdu(array $params)
     {
        // echo("Sleep starting.\n"); // TEST
-        sleep(4);
+       // sleep(4);
        // echo("Sleep ending\n"); // TEST
         $this->deviceOpen();
         if ($this->openAT === true) {
@@ -152,7 +145,7 @@ class Sms
             }
         }
         $this->deviceClose();
-        if ($out == 'OK') {
+        if (stripos($out, "OK") !== false) {
             return true;
         } else {
             return false;
