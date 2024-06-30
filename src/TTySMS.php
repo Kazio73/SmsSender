@@ -29,8 +29,8 @@ class TTySMS
         );
     }
 
-    public function sendTTyPduSms() {
-
+    public function sendTTyPduSms()
+    {
 
         $pdu = $this->generateSmsPdu();
 
@@ -38,14 +38,11 @@ class TTySMS
         $serial->set_options($this->options);
 
         try {
-        $sms = Sms::factory($serial, true);
-
-              if ($sms->sendSmsPdu($pdu)) {
-            //    echo "SMS Sent\n";
-                return true;
+            $sms = Sms::factory($serial, true);
+            if ($sms->sendSmsPdu($pdu)) {
+                return "SMS Sent";
             } else {
-             //   echo "Sent Error\n";
-                return false;
+                return "Sent Error";
             }
         } catch (\Exception $e) {
             switch ($e->getCode()) {

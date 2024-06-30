@@ -26,23 +26,20 @@ class TTySMS
         );
     }
 
-    public function sendTTyPduSms() {
-
+    public function sendTTyPduSms()
+    {
         $pdu = $this->generateSmsPdu();
-
-        $pin ='1234';
 
         $serial = new SmsSerialIO($this->serial);
         $serial->set_options($this->options);
 
         try {
-        if (Sms::factory($serial, true)
-            ->sendSmsPdu($pdu)) {
-         return "SMS sent\n";
-        } else {
-           return "SMS not Sent\n";
-        }
-
+            $sms = (Sms::factory($serial, true));
+            if ($sms->sendSmsPdu($pdu)) {
+                return "SMS Sent";
+            } else {
+                return "Sent Error";
+            }
         } catch (\Exception $e) {
             switch ($e->getCode()) {
                 case Sms::EXCEPTION_NO_PIN:
@@ -60,6 +57,5 @@ class TTySMS
         }
 
     }
-
 }
 
