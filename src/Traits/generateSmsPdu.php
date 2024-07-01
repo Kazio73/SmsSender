@@ -15,11 +15,11 @@ trait generateSmsPdu
      * This method is preparing all params
      * @return void
      */
-    protected  function setParams(array $params)
+    protected function setParams(array $params)
     {
-        $this->number = $params['number']?:'';
-        $this->smsc = $params['smsc']?:'+48602951111';
-        $this->text = $params['text']?:'';
+        $this->number = $params['number'] ?: '';
+        $this->smsc = $params['smsc'] ?: '+48602951111';
+        $this->text = $params['text'] ?: '';
 
         $this->cutText();
         $this->checkPhone();
@@ -31,17 +31,21 @@ trait generateSmsPdu
      */
     protected function cutText()
     {
-        $this->text = substr( $this->text, 0, 70);
+        $this->text = substr($this->text, 0, 70);
     }
 
     /**
-     * This method add +48 before phone number
+     * This method add +48 before phone number and sanitize number from spaces chars (ascii 32)
      * @return void
      */
-    protected function checkPhone() :void
+    protected function checkPhone(): void
     {
-        if (!str_contains($this->number , '+48')){
-            $this->number = '+48'. $this->number;
+        if (str_contains($this->number, " "))
+        {
+            $this->number = str_replace(" ", "", $this->number);
+        }
+        if (!str_contains($this->number, '+48')) {
+            $this->number = '+48' . $this->number;
         }
     }
 
