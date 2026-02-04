@@ -4,35 +4,18 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "656180f598b2d46e2b0ef2c46b717c51",
-    "packages": [
-        {
-            "name": "phpclasses/php_serial",
-            "version": "1.10",
-            "dist": {
-                "type": "zip",
-                "url": "https://www.phpclasses.org/install/package/php_serial.zip"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-develop": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            }
-        }
-    ],
+    "content-hash": "011273df2a67640df0d72b8cc24180a3",
+    "packages": [],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "platform": {
+        "php": ">=8.1.0",
+        "ext-dio": "*"
+    },
+    "platform-dev": {},
+    "plugin-api-version": "2.9.0"
 }

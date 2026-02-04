@@ -1,9 +1,9 @@
 <?php
 
-namespace Kazio\SmsSender\Traits;
+namespace Kazio\SmsSender\Traits\Traits;
 
-use Kazio\SmsSender\Main\SmsPduMaker;
 use Kazio\SmsSender\Main\SmsMessage as SMS;
+use Kazio\SmsSender\Main\SmsPduMaker;
 
 trait generateSmsPdu
 {
@@ -18,7 +18,8 @@ trait generateSmsPdu
     protected  function setParams(array $params)
     {
         $this->number = $params['number']?:'';
-        $this->smsc = $params['smsc']?:'+48602951111';
+      //  $this->smsc = $params['smsc']?:'+48602951111';
+        $this->smsc = $params['smsc']?:'+48790998250';
         $this->text = $params['text']?:'';
 
         $this->cutText();

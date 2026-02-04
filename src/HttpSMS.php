@@ -2,9 +2,9 @@
 
 namespace Kazio\SmsSender;
 
-use Kazio\SmsSender\Main\Sms;
 use Kazio\SmsSender\Interfaces\SmsHttp;
-use Kazio\SmsSender\Traits\generateSmsPdu;
+use Kazio\SmsSender\Main\Sms;
+use Kazio\SmsSender\Traits\Traits\generateSmsPdu;
 
 class HttpSMS
 {

@@ -6,6 +6,7 @@ use Exception;
 use Kazio\SmsSender\Interfaces\SmsHttp;
 use Kazio\SmsSender\Interfaces\SmsSerial;
 use Kazio\SmsSender\Interfaces\SmsInterface;
+use Kazio\SmsSender\Interfaces\SmsSerialIO;
 
 /**
  * GSM Modem AT Send/receive
@@ -43,6 +44,7 @@ class Sms
     {
         if (!($serial instanceof SmsSerial ||
             $serial instanceof SmsHttp ||
+            $serial instanceof SmsSerialIO ||
             $serial instanceof SmsDummy
         )) {
             throw new Exception("NOT IMPLEMENTED", self::EXCEPTION_SERVICE_NOT_IMPLEMENTED);
@@ -55,7 +57,8 @@ class Sms
             '+CPIN: READY',
             '> AT+CMGF=0',
             '> AT+CSCS=?',
-            '>'
+            '>',
+            '> '
         ));
 
         return new self($serial, $debug);
@@ -67,18 +70,39 @@ class Sms
         $this->_debug = $debug;
     }
 
-    private function readPort($returnBufffer = false)
+    private function readPort(bool $returnBuffer = false)
     {
-        $out = null;
-        list($last, $buffer) = $this->_serial->readPort();
-        if ($returnBufffer) {
-            $out = $buffer;
+        // Call low-level serial read
+        $result = $this->_serial->readPort();
+
+        // Normalize return value to [$last, $buffer]
+        if (!is_array($result)) {
+            // Serial returned a string (e.g. "OK", "ERROR", "TIMEOUT")
+            $last   = (string) $result;
+            $buffer = [];
         } else {
-            $out = strtoupper($last);
+            // Reindex array to ensure numeric keys 0..n-1
+            $result = array_values($result);
+
+            // Extract values safely
+            $last   = $result[0] ?? 'TIMEOUT';
+            $buffer = $result[1] ?? [];
         }
+
+        // Decide what to return
+        $out = $returnBuffer
+            ? $buffer
+            : strtoupper((string) $last);
+
+        // Debug output
         if ($this->_debug === true) {
-            echo $out . "\n";
+            if (is_array($out)) {
+                echo implode("\n", $out) . "\n";
+            } else {
+                echo $out . "\n";
+            }
         }
+
         return $out;
     }
 
@@ -127,9 +151,9 @@ class Sms
      */
     public function sendSmsPdu(array $params)
     {
-        echo("Sleep starting.\n"); // TEST
-        sleep(5);
-        echo("Sleep ending\n"); // TEST
+     /*   echo("Sleep starting.\n"); // TEST
+        sleep(.5);
+        echo("Sleep ending\n"); // TEST*/
         $this->deviceOpen();
         if ($this->openAT === true) {
             $this->sendMessage("AT+CMGF=0\r");
